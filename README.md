@@ -30,7 +30,7 @@ que los alumnos podrán modificar si así lo desean. En esta base de referencia 
 incluye la tabla donde se almacenarán las notificaciones, es tarea de los alumnos crear esa
 tabla para dar soporte a los requerimientos planteados en este trabajo.
 
-###Consignas
+### Consignas
 En base a lo explicado anteriormente, los requerimientos para el trabajo integrador son:
 
 1. Generar los endpoints necesarios para:
