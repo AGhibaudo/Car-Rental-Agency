@@ -1,10 +1,10 @@
-package com.tpbackend.mspruebas;
+package com.tpbackend.microservicio_vehiculos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MicroservicioPruebasApplicationTests {
+class MicroservicioVehiculosApplicationTests {
 
 	@Test
 	void contextLoads() {
