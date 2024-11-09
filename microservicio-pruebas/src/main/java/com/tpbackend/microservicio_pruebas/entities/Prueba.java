@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -22,17 +23,20 @@ public class Prueba {
 
     @Column(name = "FECHA_HORA_INICIO")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private String fechaHoraInicio;
+    private LocalDateTime fechaHoraInicio;
 
     @Column(name = "FEHA_HORA_FIN")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private String fechaHoraFin;
+    private LocalDateTime fechaHoraFin;
 
     @Column(name = "COMENTARIOS")
     private String comentarios;
 
     @Column(name = "CANTIDAD_KM_REGISTRADOS")
     private String cantKmRegistrados;
+
+    @Column(name = "ACTIVA")
+    private Boolean activa;
 
     // Relaciones con las demás tablas
     @ManyToOne

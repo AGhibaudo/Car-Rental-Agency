@@ -2,6 +2,7 @@ package com.tpbackend.microservicio_pruebas.services;
 
 
 import com.tpbackend.microservicio_pruebas.entities.Empleado;
+import com.tpbackend.microservicio_pruebas.entities.Notificacion;
 import com.tpbackend.microservicio_pruebas.entities.Prueba;
 import com.tpbackend.microservicio_pruebas.repositories.EmpleadoRepository;
 import com.tpbackend.microservicio_pruebas.services.interfaces.EmpleadoService;
