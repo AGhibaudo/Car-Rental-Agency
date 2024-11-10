@@ -6,6 +6,8 @@ import com.tpbackend.microservicio_pruebas.entities.Prueba;
 import com.tpbackend.microservicio_pruebas.entities.Vehiculo;
 import com.tpbackend.microservicio_pruebas.repositories.PruebaRepository;
 import com.tpbackend.microservicio_pruebas.services.interfaces.PruebaService;
+import com.tpbackend.microservicio_pruebas.dtos.IncidentesDTO;
+import com.tpbackend.microservicio_pruebas.dtos.IncidenteDeEmpleadoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -102,7 +104,14 @@ public class PruebaServiceImpl extends ServiceImpl<Prueba, Long> implements Prue
         return null;
     }
 
-    // Faltan los DTO's
+    // Reportes 1° punto F ->  i & ii
+    public List<IncidentesDTO> buscarIncidentes(){
+        return pruebaRepository.buscarIncidentes();
+    }
+
+    public List<IncidenteDeEmpleadoDTO> buscarIncidentesParaUnEmpleado(Long Legajo){
+        return pruebaRepository.buscarIncidentesParaUnEmpleado(legajo);
+    }
 
     @Override
     public Prueba create(Prueba entity) {

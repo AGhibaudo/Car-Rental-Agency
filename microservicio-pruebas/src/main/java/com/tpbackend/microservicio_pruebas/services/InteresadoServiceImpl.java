@@ -1,7 +1,6 @@
 package com.tpbackend.microservicio_pruebas.services;
 
 import com.tpbackend.microservicio_pruebas.entities.Interesado;
-import com.tpbackend.microservicio_pruebas.entities.Notificacion;
 import com.tpbackend.microservicio_pruebas.repositories.InteresadoRepository;
 import com.tpbackend.microservicio_pruebas.services.interfaces.InteresadoService;
 import org.springframework.beans.factory.annotation.Autowired;
