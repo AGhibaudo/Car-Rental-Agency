@@ -13,8 +13,8 @@ public class DetallesPruebaVehiculoDTO {
     // Atributos del Vehiculo
     private Long vehiculoId;
     private String patente;
-    private String descripcionModelo;
-    private String nombreMarca;
+    private String descripcionModelo; // Atributo del Modelo
+    private String nombreMarca; // Atributo de la Marca
     // Plazo de la prueba.
     private LocalDateTime fechaHoraInicio;
     private LocalDateTime fechaHoraFin;

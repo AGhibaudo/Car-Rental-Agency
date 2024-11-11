@@ -109,7 +109,7 @@ public class PruebaServiceImpl extends ServiceImpl<Prueba, Long> implements Prue
         return pruebaRepository.buscarIncidentes();
     }
 
-    public List<IncidenteDeEmpleadoDTO> buscarIncidentesParaUnEmpleado(Long Legajo){
+    public List<IncidenteDeEmpleadoDTO> buscarIncidentesParaUnEmpleado(Long legajo){
         return pruebaRepository.buscarIncidentesParaUnEmpleado(legajo);
     }
 
