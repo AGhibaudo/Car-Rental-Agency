@@ -27,7 +27,7 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Long> implements 
     public List<DetallesPruebaVehiculoDTO> buscarPruebaPorIdVehiculo(Long idVehiculo){
         return vehiculoRepository.buscarPruebaPorIdVehiculo(idVehiculo);
     }
-    
+
     @Override
     public Vehiculo create(Vehiculo entity) {
         vehiculoRepository.save(entity);
