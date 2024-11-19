@@ -1,4 +1,4 @@
-package com.tpbackend.microservicio_pruebas.entities;
+package com.tpbackend.microservicio_vehiculos.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

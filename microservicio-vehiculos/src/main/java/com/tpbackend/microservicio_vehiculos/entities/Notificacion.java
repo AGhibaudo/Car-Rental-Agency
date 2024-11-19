@@ -1,4 +1,4 @@
-package com.tpbackend.microservicio_pruebas.entities;
+package com.tpbackend.microservicio_vehiculos.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,12 +7,12 @@ import lombok.AllArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Modelos")
+@Table(name = "Notificaciones")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Modelo {
+public class Notificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +20,9 @@ public class Modelo {
     @Column(name = "DESCRIPCION")
     private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "ID_MARCA", nullable = false)
-    private Marca marca;
+    @Column(name = "LEGAJO")
+    private Long legajo;
+
+    @Column(name = "TELEFONO_CONTACTO_INTERESADO")
+    private Long telefonoInteresado;
 }

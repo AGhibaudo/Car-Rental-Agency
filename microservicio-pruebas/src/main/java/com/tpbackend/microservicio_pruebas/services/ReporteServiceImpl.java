@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class ReporteServiceImpl {
-    // Generación de reportes.
+    // Generación de reportes - Este service se encarga de generar los reportes :).
     // i. Incidentes (pruebas donde se excedieron los límites establecidos).
     public byte[] generarReporteIncidentes(List<IncidentesDTO> incidentes) throws IOException {
         Workbook excel = new XSSFWorkbook();

@@ -24,5 +24,5 @@ public class Notificacion {
     private Long legajo;
 
     @Column(name = "TELEFONO_CONTACTO_INTERESADO")
-    private String telefonoInteresado;
+    private Long telefonoInteresado;
 }

@@ -1,4 +1,4 @@
-package com.tpbackend.microservicio_pruebas.entities;
+package com.tpbackend.microservicio_vehiculos.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -36,12 +36,13 @@ public class Interesado {
     private Boolean restringido;
 
     @Column(name = "NRO_LICENCIA", unique = true)
-    private Long nroLicencia;
+    private Long numeroLicencia;
 
     @Column(name = "TELEFONO_CONTACTO")
     private Long telefonoContacto;
 
-    @Column(name = "FECHA_VENCIMIENTO_LICNCIA")
+    @Column(name = "FECHA_VENCIMIENTO_LICENCIA")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fechaVencimientoLicencia;
+
 }

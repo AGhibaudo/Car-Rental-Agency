@@ -40,6 +40,13 @@ public class PruebaController {
     }
 
     // Endpoint de generar la prueba punto 1.a
+    /*
+        a. Crear una nueva prueba, validando que el cliente no tenga la licencia vencida ni que
+        esté restringido para probar vehículos en la agencia.
+        Vamos a asumir que un interesado puede tener una única licencia registrada en el sistema
+        y que todos los vehículos están patentados. También deben realizarse los controles razonables
+        del caso; por ejemplo, que un mismo vehículo no esté siendo probado en ese mismo momento.
+    */
     @PostMapping()
     public ResponseEntity<String> guardarPrueba(@RequestBody Prueba prueba){
         String error = pruebaService.validarPreparacionPrueba(prueba);
@@ -51,6 +58,9 @@ public class PruebaController {
     }
 
     // Endpoint de Listar las pruebas en curso 1.b
+    /*
+        b. Listar todas las pruebas en curso en un momento dado
+    */
     @GetMapping("/en_curso")
     public List<Prueba> obtenerPruebasEnCurso(){
         LocalDateTime fechaActual = LocalDateTime.now();
@@ -58,6 +68,9 @@ public class PruebaController {
     }
 
     // Endpoint de Finalizar una prueba, permitiendo al empleado agregar un comentario 1.c
+    /*
+        c. Finalizar una prueba, permitiéndole al empleado agregar un comentario sobre la misma.
+    */
     @PatchMapping("/{id}/finalizar")
     public ResponseEntity<String> terminarPrueba(@PathVariable("id") Long id, @RequestBody String comentario){
         Prueba prueba = pruebaService.findById(id);
@@ -78,8 +91,19 @@ public class PruebaController {
         return ResponseEntity.ok("La prueba fue finalizada exitosamente.");
     }
 
-    // Punto E ->   Enviar una notificación de promoción a uno o más teléfonos.
-    // Como acá no pide implementar obligatoriamente una notificación real se almacena en una tabla de la BDD :)
+    // Endpoint que soluciona el punto E, pero utiliza las condiciones del punto D;
+    /*
+        d. Recibir la posición actual de un vehículo y evaluar si el vehículo se encuentra en una
+        prueba para revisar si está dentro de los límites establecidos. En caso de que el vehículo se
+        encuentre en una prueba y haya excedido el radio permitido o ingresado a una zona peligrosa,
+        se deben disparar las acciones descriptas. ATENCIÓN: NO se espera que los alumnos hagan una
+        notificación real a un teléfono, sino que alcanza con almacenar la notificación en la
+        base de datos; pero si un grupo desea investigar e implementar una notificación
+        por mail, SMS, WhatsApp o cualquier medio, tiene libertad para hacerlo.
+
+        e. Enviar una notificación de promoción a uno o más teléfonos.
+        Aplican las mismas consideraciones que en el punto anterior.
+    */
     @PostMapping("/notificar")
     public ResponseEntity<String> guardarPrueba(@RequestBody NotificacionTelefono notificacionTelefono) {
         notificacionTelefonoService.guardarNotificacion(notificacionTelefono);
@@ -88,7 +112,9 @@ public class PruebaController {
 
     // Endpoints de los Reportes
 
-    // Reporte -> i. Incidentes (Pruebas donde se excedieron los límites establecidos).
+    // Punto f
+
+    // i. Incidentes (pruebas donde se excedieron los límites establecidos)
     @GetMapping("/reporte/incidentes")
     public void generarReporteIncidentes(HttpServletResponse res) throws IOException {
         //Seteamos el tipo de contenido en este caso un excel, permitiendole saber al navegador que va a dar un archivo excel
@@ -104,7 +130,7 @@ public class PruebaController {
         res.getOutputStream().write(excel);
     }
 
-    // Reporte -> ii. Detalle de incidentes para un empleado.
+    // ii. Detalle de incidentes para un empleado.
     @GetMapping("/reporte/incidentes/{id}")
     public void generarReporteIncidenteDeEmpleado(@PathVariable("id") Long legajo, HttpServletResponse res) throws IOException {
         res.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -117,7 +143,7 @@ public class PruebaController {
 
     }
 
-    // Reporte -> iii. Cantidad de kilómetros de prueba que recorrió un vehículo en un período determinado
+    // iii. Cantidad de kilómetros de prueba que recorrió un vehículo en un período determinado
     @GetMapping("/reporte/cant_km_vehiculo/{id}")
     public void generarReporteCantKmRecorridosPorVehiculo(@PathVariable("id") Long idVehiculo,
                                                           @RequestParam("fechaHoraInicio") String fechaHoraInicio,
@@ -134,7 +160,7 @@ public class PruebaController {
         res.getOutputStream().write(excel);
     }
 
-    // Reporte -> iv. Detalle de pruebas realizadas para un vehículo
+    // iv. Detalle de pruebas realizadas para un vehículo
     @GetMapping("/reporte/detalle_vehiculo/{id}")
     public void generarReporteDetallesPruebaVehiculo(@PathVariable("id") Long idVehiculo, HttpServletResponse res) throws IOException{
         List<DetallesPruebaVehiculoDTO> pruebasPorVehiculo = vehiculoService.buscarPruebaPorIdVehiculo(idVehiculo);

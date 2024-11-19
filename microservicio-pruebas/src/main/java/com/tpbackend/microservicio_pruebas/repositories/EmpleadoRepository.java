@@ -12,11 +12,11 @@ import java.util.List;
 
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
-    // Dentro de cada repository van las querys que son las consultas a la base de datos "agencia"
-    @Query("SELECT p " +
-            "FROM prueba p" +
-            "WHERE p.empleado = :empleado " +
-            "AND ((p.fechaHoraInicio <= :fechaHoraFin AND p.fechaHoraFin >= :fechaHoraInicio))")
+    // Acá hacemos la consulta para saber si el empleado esta disponible.
+    @Query("SELECT P " +
+            "FROM Prueba P" +
+            "WHERE P.empleado = :empleado " +
+            "AND ((P.fechaHoraInicio <= :fechaHoraFin AND P.fechaHoraFin >= :fechaHoraInicio))")
     List<Prueba> findByEmpleadoYFecha(@Param("empleado") Empleado empleado,
                                       @Param("fechaHoraInicio")LocalDateTime fechaHoraInicio,
                                       @Param("fechaHoraFin") LocalDateTime fechaHoraFin);

@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 public class PruebaServiceImpl extends ServiceImpl<Prueba, Long> implements PruebaService {
-
+    // Nos traemos nuestro repository, y a su vez los demás services para implementarlos aqui.
     @Autowired
     PruebaRepository pruebaRepository;
 
@@ -32,6 +32,7 @@ public class PruebaServiceImpl extends ServiceImpl<Prueba, Long> implements Prue
     @Autowired
     PosicionServiceImpl posicionService;
 
+    // Acá empezamos a realizar la lógica que utilizaremos en los endpoints.
     @Override
     public List<Prueba> buscarPruebasEnCurso(LocalDateTime fechaActual) {
         return pruebaRepository.buscarPruebasEnCurso(fechaActual);

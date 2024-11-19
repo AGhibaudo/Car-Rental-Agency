@@ -14,6 +14,7 @@ import java.util.List;
 
 @Repository
 public interface PruebaRepository extends JpaRepository<Prueba, Long> {
+    // La siguiente consulta busca si el vehículo está disponible.
     @Query("SELECT P " +
             "FROM Prueba P " +
             "WHERE P.vehiculo = :vehiculo AND " +
@@ -23,6 +24,7 @@ public interface PruebaRepository extends JpaRepository<Prueba, Long> {
                                       @Param("fechaHoraInicio") LocalDateTime fechaHoraInicio,
                                       @Param("fechaHoraFin") LocalDateTime fechaHoraFin);
 
+    // Está consulta verífica si al prueba está en curso.
     @Query("SELECT P " +
             "FROM Prueba P " +
             "WHERE P.fechaHoraInicio <= :fechaActual AND " +
