@@ -19,7 +19,7 @@ public class PruebaServiceImpl extends ServiceImpl<Prueba, Long> implements Prue
 
     @Override
     public List<Prueba> elVehiculoEstaEnPruebaYCumpleConLosLimites(Vehiculo vehiculo, LocalDateTime fechaHora) {
-        return this.buscarVehiculoYFecha(vehiculo, fechaHora);
+        return buscarVehiculoYFecha(vehiculo, fechaHora);
     }
 
     @Override

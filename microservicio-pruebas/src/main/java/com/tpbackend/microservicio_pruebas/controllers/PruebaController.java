@@ -36,7 +36,7 @@ public class PruebaController {
 
     @GetMapping("/status")
     public ResponseEntity<String> status() {
-        return ResponseEntity.ok("Microservicio en ejecución...");
+        return ResponseEntity.ok("Microservicio pruebas en ejecución...");
     }
 
     // Endpoint de generar la prueba punto 1.a
@@ -93,14 +93,6 @@ public class PruebaController {
 
     // Endpoint que soluciona el punto E, pero utiliza las condiciones del punto D;
     /*
-        d. Recibir la posición actual de un vehículo y evaluar si el vehículo se encuentra en una
-        prueba para revisar si está dentro de los límites establecidos. En caso de que el vehículo se
-        encuentre en una prueba y haya excedido el radio permitido o ingresado a una zona peligrosa,
-        se deben disparar las acciones descriptas. ATENCIÓN: NO se espera que los alumnos hagan una
-        notificación real a un teléfono, sino que alcanza con almacenar la notificación en la
-        base de datos; pero si un grupo desea investigar e implementar una notificación
-        por mail, SMS, WhatsApp o cualquier medio, tiene libertad para hacerlo.
-
         e. Enviar una notificación de promoción a uno o más teléfonos.
         Aplican las mismas consideraciones que en el punto anterior.
     */
