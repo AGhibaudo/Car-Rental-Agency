@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 // Aca configuramos el routeo de los dos microservicios.
 public class GWConfig {
     // Paso como parámetro el modulo del microservicio pruebas, por ende la URI estará referenciada a este micro
-    @Value("{microservicio-pruebas}")
+    @Value("${microservicio-pruebas}")
     private String uriPruebas;
 
-    @Value("{microservicio-vehiculos}")
+    @Value("${microservicio-vehiculos}")
     private String uriVehiculos;
 
     // Declaro un @Bean en el cual hacemos el configurador de rutas, permitiendo acceder a los respectivos microservicios
