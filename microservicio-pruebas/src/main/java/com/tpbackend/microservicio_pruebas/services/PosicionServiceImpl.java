@@ -44,7 +44,7 @@ public class PosicionServiceImpl extends ServiceImpl<Posicion, Long> implements 
     }
 
     @Override
-    public List<Posicion> findAll() {
+    public Iterable<Posicion> findAll() {
         return posicionRepository.findAll();
     }
 

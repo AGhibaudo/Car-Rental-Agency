@@ -52,7 +52,7 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Long> implements 
     }
 
     @Override
-    public List<Vehiculo> findAll() {
+    public Iterable<Vehiculo> findAll() {
         return vehiculoRepository.findAll();
     }
 

@@ -38,7 +38,7 @@ public class InteresadoServiceImpl extends ServiceImpl<Interesado, Long> impleme
     }
 
     @Override
-    public List<Interesado> findAll() {
+    public Iterable<Interesado> findAll() {
         return interesadoRepository.findAll();
     }
 

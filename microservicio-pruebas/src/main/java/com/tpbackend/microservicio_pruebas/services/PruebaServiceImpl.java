@@ -138,7 +138,7 @@ public class PruebaServiceImpl extends ServiceImpl<Prueba, Long> implements Prue
     }
 
     @Override
-    public List<Prueba> findAll() {
+    public Iterable<Prueba> findAll() {
         return pruebaRepository.findAll();
     }
 

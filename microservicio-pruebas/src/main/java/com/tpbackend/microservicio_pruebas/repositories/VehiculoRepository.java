@@ -3,8 +3,8 @@ package com.tpbackend.microservicio_pruebas.repositories;
 import com.tpbackend.microservicio_pruebas.entities.Vehiculo;
 import com.tpbackend.microservicio_pruebas.dtos.DetallesPruebaVehiculoDTO;
 import com.tpbackend.microservicio_pruebas.dtos.CantKmRegistradosPorVehiculoDTO;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface VehiculoRepository extends JpaRepository<Vehiculo,Long> {
+public interface VehiculoRepository extends CrudRepository<Vehiculo,Long> {
     // Reportes por parte de los Incidentes - Punto 1 -> F del enunciado
 
     /*
@@ -20,12 +20,12 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo,Long> {
     período determinado
     */
     @Query("SELECT new com.tpbackend.microservicio_pruebas.dtos.CantKmRegistradosPorVehiculoDTO(" +
-            "P.id, P.fechaHoraInicio, P.fechaHoraFin, V.patente, SUM(CAST(P.cantKmRegistrados as Double))) " +
-            "FROM prueba P JOIN vehiculo V on P.vehiculo.id = V.id " +
-            "WHERE P.fechaHoraInicio >= :fechaHoraInicio " +
-            "AND P.fechaHoraFin <= :fechaHoraFin " +
-            "AND V.id = :idVehiculo " +
-            "GROUP BY V.patente")
+            "p.id, p.fechaHoraInicio, p.fechaHoraFin, v.patente, SUM(CAST(p.cantKmRegistrados as Double))) " +
+            "FROM Prueba p JOIN Vehiculo v on p.vehiculo.id = v.id " +
+            "WHERE p.fechaHoraInicio >= :fechaHoraInicio " +
+            "AND p.fechaHoraFin <= :fechaHoraFin " +
+            "AND v.id = :idVehiculo " +
+            "GROUP BY v.patente")
     List<CantKmRegistradosPorVehiculoDTO> buscarKmRegistradosPorVehiculos(@Param("fechaHoraInicio") LocalDateTime fechaHoraInicio,
                                                                           @Param("fechaHoraFin") LocalDateTime fechaHoraFin,
                                                                           @Param("idVehiculo") Long id);
@@ -34,14 +34,14 @@ public interface VehiculoRepository extends JpaRepository<Vehiculo,Long> {
     */
     // Utilizo B como sinonimo de Marca -> Brand -> (Marca)
     @Query("SELECT new com.tpbackend.microservicio_pruebas.dtos.DetallesPruebaVehiculoDTO(" +
-            "V.id, V.patente, M.descripcion, B.nombre, P.fechaHoraInicio, P.fechaHoraFin, " +
-            "I.tipoDocumento, I.documento, I.apellido, I.nombre, I.nroLicencia, I.fechaVencimientoLicencia, " +
-            "E.legajo, E.apellido, E.nombre, P.comentarios) " +
-            "FROM prueba P JOIN vehiculo V ON P.vehiculo.id = V.id " +
-            "JOIN modelo M ON V.modelo.id = M.id " +
-            "JOIN marca B ON M.marca.id = B.id " +
-            "JOIN empleado E ON P.empleado.id = E.legajo " +
-            "JOIN interesado I ON P.interesado.id = I.id " +
-            "WHERE V.id = :idVehiculo")
+            "v.id, v.patente, m.descripcion, b.nombre, p.fechaHoraInicio, p.fechaHoraFin, " +
+            "i.tipoDocumento, i.documento, i.apellido, i.nombre, i.nroLicencia, i.fechaVencimientoLicencia, " +
+            "e.legajo, e.apellido, e.nombre, p.comentarios) " +
+            "FROM Prueba p JOIN Vehiculo v ON p.vehiculo.id = v.id " +
+            "JOIN Modelo m ON v.modelo.id = m.id " +
+            "JOIN Marca b ON m.marca.id = b.id " +
+            "JOIN Empleado e ON p.empleado.id = e.legajo " +
+            "JOIN Interesado i ON p.interesado.id = i.id " +
+            "WHERE v.id = :idVehiculo")
     List<DetallesPruebaVehiculoDTO> buscarPruebaPorIdVehiculo(@Param("idVehiculo") Long id);
 }

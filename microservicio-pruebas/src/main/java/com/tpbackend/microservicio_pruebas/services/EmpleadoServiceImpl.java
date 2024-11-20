@@ -59,7 +59,7 @@ public class EmpleadoServiceImpl extends ServiceImpl<Empleado, Long> implements 
     }
 
     @Override
-    public List<Empleado> findAll() {
+    public Iterable<Empleado> findAll() {
         return empRepository.findAll();
     }
 
