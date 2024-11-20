@@ -44,7 +44,7 @@ public class NotificacionServiceImpl extends ServiceImpl<Notificacion, Long>  im
     }
 
     @Override
-    public List<Notificacion> findAll() {
+    public Iterable<Notificacion> findAll() {
         return notificacionRepository.findAll();
     }
 
