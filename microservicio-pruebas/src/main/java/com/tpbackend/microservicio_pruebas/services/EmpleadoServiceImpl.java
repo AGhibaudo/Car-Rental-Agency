@@ -20,11 +20,6 @@ public class EmpleadoServiceImpl extends ServiceImpl<Empleado, Long> implements 
     EmpleadoRepository empRepository;
 
     @Override
-    public Empleado findByLegajo(Long legajo) {
-        return empRepository.findById(legajo).orElse(null);
-    }
-
-    @Override
     public boolean estaDisponible(Empleado empleado, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin) {
         List<Prueba> empleadosOcupados = this.findByEmpleadoYFecha(empleado, fechaHoraInicio, fechaHoraFin);
         return empleadosOcupados.isEmpty();
@@ -49,13 +44,12 @@ public class EmpleadoServiceImpl extends ServiceImpl<Empleado, Long> implements 
 
     @Override
     public void delete(Long id) {
-        Empleado entity = findById(id);
+        Empleado entity = findByLegajo(id);
         empRepository.delete(entity);
     }
 
-    @Override
-    public Empleado findById(Long id) {
-        return empRepository.findById(id).orElse(null);
+    public Empleado findByLegajo(Long legajo) {
+        return empRepository.findById(legajo).orElse(null);
     }
 
     @Override

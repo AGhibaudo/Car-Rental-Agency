@@ -38,7 +38,6 @@ public class NotificacionServiceImpl extends ServiceImpl<Notificacion, Long>  im
         notificacionRepository.delete(notificacion);
     }
 
-    @Override
     public Notificacion findById(Long id) {
         return notificacionRepository.findById(id).orElse(null);
     }

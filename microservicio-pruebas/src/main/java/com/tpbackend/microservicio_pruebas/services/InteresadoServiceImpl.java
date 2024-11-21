@@ -32,7 +32,6 @@ public class InteresadoServiceImpl extends ServiceImpl<Interesado, Long> impleme
         interesadoRepository.delete(entity);
     }
 
-    @Override
     public Interesado findById(Long id) {
         return interesadoRepository.findById(id).orElse(null);
     }

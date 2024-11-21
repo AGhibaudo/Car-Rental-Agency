@@ -3,20 +3,18 @@ package com.tpbackend.microservicio_pruebas.services;
 import com.tpbackend.microservicio_pruebas.entities.Notificacion;
 import com.tpbackend.microservicio_pruebas.entities.NotificacionTelefono;
 import com.tpbackend.microservicio_pruebas.repositories.NotificacionTelefonoRepository;
-import com.tpbackend.microservicio_pruebas.services.interfaces.NotificacionTelefonoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class NotificacionTelefonoServiceImpl extends ServiceImpl<Notificacion, Long> implements NotificacionTelefonoService {
+public class NotificacionTelefonoServiceImpl extends ServiceImpl<Notificacion, Long>  {
 
     @Autowired
     NotificacionTelefonoRepository notificacionTelefonoRepository;
 
     // Este guardar notificacion crea una lista de telefonos en la que se guarda una nueva notificación.
-    @Override
     public void guardarNotificacion(NotificacionTelefono notificacionTelefono) {
         List<Long> telefonos = notificacionTelefono.getTelefonos();
         Notificacion notificacion = notificacionTelefono.getNotificacion();
@@ -48,7 +46,6 @@ public class NotificacionTelefonoServiceImpl extends ServiceImpl<Notificacion, L
         notificacionTelefonoRepository.delete(entity);
     }
 
-    @Override
     public Notificacion findById(Long id) {
         return notificacionTelefonoRepository.findById(id).orElse(null);
     }

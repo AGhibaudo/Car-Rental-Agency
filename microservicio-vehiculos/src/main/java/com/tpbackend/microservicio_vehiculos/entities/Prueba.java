@@ -31,7 +31,7 @@ public class Prueba {
     @Column(name = "COMENTARIOS")
     private String comentarios;
 
-    @Column(name = "CANTIDAD_KM_REGISTRADOS")
+    @Column(name = "KM_REGISTRADOS")
     private String cantKmRegistrados;
 
     @Column(name = "ACTIVA")

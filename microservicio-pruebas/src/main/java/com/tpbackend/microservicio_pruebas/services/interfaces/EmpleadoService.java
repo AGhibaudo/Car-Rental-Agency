@@ -7,7 +7,6 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 public interface EmpleadoService extends Service<Empleado, Long>{
-    Empleado findByLegajo(Long legajo);
     boolean estaDisponible(Empleado empleado, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin);
     List<Prueba> findByEmpleadoYFecha(Empleado empleado, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin);
 

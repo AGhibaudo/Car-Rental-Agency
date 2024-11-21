@@ -132,7 +132,6 @@ public class PruebaServiceImpl extends ServiceImpl<Prueba, Long> implements Prue
         pruebaRepository.delete(entity);
     }
 
-    @Override
     public Prueba findById(Long id) {
         return pruebaRepository.findById(id).orElse(null);
     }

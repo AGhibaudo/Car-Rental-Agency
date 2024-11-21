@@ -102,7 +102,6 @@ public class VehiculoServiceImpl extends ServiceImpl<Vehiculo, Long> implements 
         vehiculoRepository.delete(vehiculo);
     }
 
-    @Override
     public Vehiculo findById(Long id) {
         return vehiculoRepository.findById(id).orElse(null);
     }

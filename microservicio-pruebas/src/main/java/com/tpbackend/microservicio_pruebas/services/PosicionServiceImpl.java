@@ -38,7 +38,6 @@ public class PosicionServiceImpl extends ServiceImpl<Posicion, Long> implements 
         posicionRepository.delete(entity);
     }
 
-    @Override
     public Posicion findById(Long id) {
         return posicionRepository.findById(id).orElse(null);
     }
